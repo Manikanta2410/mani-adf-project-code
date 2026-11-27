@@ -1,0 +1,66 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "satya-ADF-CI"
+		},
+		"LS 1_accountKey": {
+			"value": ""
+		},
+		"LS_DB_scd_password": {
+			"value": ""
+		},
+		"LS_DL__accountKey": {
+			"value": ""
+		},
+		"LS_DL_04_accountKey": {
+			"value": ""
+		},
+		"LS_aws_s3_secretAccessKey": {
+			"value": ""
+		},
+		"Ls_onprem_mysql1_password": {
+			"value": ""
+		},
+		"LS 1_properties_typeProperties_url": {
+			"value": "https://m1datalakestorageaccount.dfs.core.windows.net/"
+		},
+		"LS_DB_scd_properties_typeProperties_server": {
+			"value": "sqldatabaseservermani.database.windows.net"
+		},
+		"LS_DB_scd_properties_typeProperties_database": {
+			"value": "azure-sql-DB-01"
+		},
+		"LS_DB_scd_properties_typeProperties_userName": {
+			"value": "adeazuuresql"
+		},
+		"LS_DL__properties_typeProperties_url": {
+			"value": "https://m1datalakestorageaccount.dfs.core.windows.net/"
+		},
+		"LS_DL_04_properties_typeProperties_url": {
+			"value": "https://m1datalakestorageaccount.dfs.core.windows.net/"
+		},
+		"LS_aws_s3_properties_typeProperties_accessKeyId": {
+			"value": "AKIATVKU7FPU7HRLU7KJ"
+		},
+		"Ls_onprem_mysql1_properties_typeProperties_server": {
+			"value": "127.0.0.1"
+		},
+		"Ls_onprem_mysql1_properties_typeProperties_database": {
+			"value": "employees"
+		},
+		"Ls_onprem_mysql1_properties_typeProperties_username": {
+			"value": "root"
+		},
+		"TG_backupfiles_stotageevent_properties_typeProperties_scope": {
+			"value": "/subscriptions/9f8ab0b5-814a-4097-b2b2-932c230e2181/resourceGroups/Mani-RG-C1/providers/Microsoft.Storage/storageAccounts/m1datalakestorageaccount"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

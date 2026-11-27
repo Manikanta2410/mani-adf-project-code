@@ -1,0 +1,201 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "satya-ADF-CI"
+		},
+		"LS 1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS 1'"
+		},
+		"LS_DB_scd_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_DB_scd'"
+		},
+		"LS_DL__accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_DL_'"
+		},
+		"LS_DL_04_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_DL_04'"
+		},
+		"LS_aws_s3_secretAccessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'secretAccessKey' of 'LS_aws_s3'"
+		},
+		"Ls_onprem_mysql1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Ls_onprem_mysql1'"
+		},
+		"LS 1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://m1datalakestorageaccount.dfs.core.windows.net/"
+		},
+		"LS_DB_scd_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqldatabaseservermani.database.windows.net"
+		},
+		"LS_DB_scd_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "azure-sql-DB-01"
+		},
+		"LS_DB_scd_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adeazuuresql"
+		},
+		"LS_DL__properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://m1datalakestorageaccount.dfs.core.windows.net/"
+		},
+		"LS_DL_04_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://m1datalakestorageaccount.dfs.core.windows.net/"
+		},
+		"LS_aws_s3_properties_typeProperties_accessKeyId": {
+			"type": "string",
+			"defaultValue": "AKIATVKU7FPU7HRLU7KJ"
+		},
+		"Ls_onprem_mysql1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "127.0.0.1"
+		},
+		"Ls_onprem_mysql1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "employees"
+		},
+		"Ls_onprem_mysql1_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "root"
+		},
+		"TG_backupfiles_stotageevent_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/9f8ab0b5-814a-4097-b2b2-932c230e2181/resourceGroups/Mani-RG-C1/providers/Microsoft.Storage/storageAccounts/m1datalakestorageaccount"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "satya-ADF-CI_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS 1_accountKey": {
+						"value": "[parameters('LS 1_accountKey')]"
+					},
+					"LS_DB_scd_password": {
+						"value": "[parameters('LS_DB_scd_password')]"
+					},
+					"LS_DL__accountKey": {
+						"value": "[parameters('LS_DL__accountKey')]"
+					},
+					"LS_DL_04_accountKey": {
+						"value": "[parameters('LS_DL_04_accountKey')]"
+					},
+					"LS_aws_s3_secretAccessKey": {
+						"value": "[parameters('LS_aws_s3_secretAccessKey')]"
+					},
+					"LS 1_properties_typeProperties_url": {
+						"value": "[parameters('LS 1_properties_typeProperties_url')]"
+					},
+					"LS_DB_scd_properties_typeProperties_server": {
+						"value": "[parameters('LS_DB_scd_properties_typeProperties_server')]"
+					},
+					"LS_DB_scd_properties_typeProperties_database": {
+						"value": "[parameters('LS_DB_scd_properties_typeProperties_database')]"
+					},
+					"LS_DB_scd_properties_typeProperties_userName": {
+						"value": "[parameters('LS_DB_scd_properties_typeProperties_userName')]"
+					},
+					"LS_DL__properties_typeProperties_url": {
+						"value": "[parameters('LS_DL__properties_typeProperties_url')]"
+					},
+					"LS_DL_04_properties_typeProperties_url": {
+						"value": "[parameters('LS_DL_04_properties_typeProperties_url')]"
+					},
+					"LS_aws_s3_properties_typeProperties_accessKeyId": {
+						"value": "[parameters('LS_aws_s3_properties_typeProperties_accessKeyId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "satya-ADF-CI_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Ls_onprem_mysql1_password": {
+						"value": "[parameters('Ls_onprem_mysql1_password')]"
+					},
+					"Ls_onprem_mysql1_properties_typeProperties_server": {
+						"value": "[parameters('Ls_onprem_mysql1_properties_typeProperties_server')]"
+					},
+					"Ls_onprem_mysql1_properties_typeProperties_database": {
+						"value": "[parameters('Ls_onprem_mysql1_properties_typeProperties_database')]"
+					},
+					"Ls_onprem_mysql1_properties_typeProperties_username": {
+						"value": "[parameters('Ls_onprem_mysql1_properties_typeProperties_username')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'satya-ADF-CI_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "satya-ADF-CI_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"TG_backupfiles_stotageevent_properties_typeProperties_scope": {
+						"value": "[parameters('TG_backupfiles_stotageevent_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'satya-ADF-CI_ArmTemplate_1')]"
+			]
+		}
+	]
+}
