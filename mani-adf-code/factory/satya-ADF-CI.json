@@ -1,0 +1,16 @@
+{
+	"name": "satya-ADF-CI",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true,
+			"isExplicitlySet": false
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "cdbd0dc2-91e8-4616-a6b7-aba35e503daf",
+		"tenantId": "93f7ca22-f776-43cb-9efd-927d1c2f0603"
+	}
+}

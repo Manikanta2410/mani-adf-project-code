@@ -1,0 +1,84 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Ds_sales_File",
+						"type": "DatasetReference"
+					},
+					"name": "sourcesalesFilesonly"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Ds_sales_report",
+						"type": "DatasetReference"
+					},
+					"name": "sinkdestination"
+				}
+			],
+			"transformations": [
+				{
+					"name": "selectonlyColumns"
+				},
+				{
+					"name": "filterinvoicenumber"
+				},
+				{
+					"name": "splitCountry"
+				},
+				{
+					"name": "aggregateinvoicenumber"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          InvoiceNo as integer,",
+				"          StockCode as integer,",
+				"          Description as string,",
+				"          Quantity as integer,",
+				"          InvoiceDate as date,",
+				"          UnitPrice as float,",
+				"          CustomerID as integer,",
+				"          Country as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('hash', 1)) ~> sourcesalesFilesonly",
+				"sourcesalesFilesonly select(mapColumn(",
+				"          InvoiceNo,",
+				"          Quantity,",
+				"          InvoiceDate,",
+				"          UnitPrice,",
+				"          CustomerID,",
+				"          Country",
+				"     ),",
+				"     partitionBy('hash', 1),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectonlyColumns",
+				"selectonlyColumns filter(InvoiceNo != 537669,",
+				"     partitionBy('hash', 1)) ~> filterinvoicenumber",
+				"filterinvoicenumber split(Country == 'United Kingdom',",
+				"     Country == 'Germany',",
+				"     Country == 'Australia',",
+				"     disjoint: false,",
+				"     partitionBy('hash', 1)) ~> splitCountry@(UnitedKingdom, Germany, Australia, others)",
+				"splitCountry@UnitedKingdom aggregate(groupBy(InvoiceNo),",
+				"     UnitPrice = sum(toInteger(UnitPrice) * Quantity),",
+				"     partitionBy('hash', 1)) ~> aggregateinvoicenumber",
+				"aggregateinvoicenumber sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkdestination"
+			]
+		}
+	}
+}

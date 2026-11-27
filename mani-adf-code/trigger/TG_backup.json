@@ -1,0 +1,24 @@
+{
+	"name": "TG_backup",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_backupfile",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2026-11-22T12:25:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

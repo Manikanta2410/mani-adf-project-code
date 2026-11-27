@@ -1,0 +1,24 @@
+{
+	"name": "TG_backupfiles_stotageevent",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_backupfile",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/source-container-11/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/9f8ab0b5-814a-4097-b2b2-932c230e2181/resourceGroups/Mani-RG-C1/providers/Microsoft.Storage/storageAccounts/m1datalakestorageaccount",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

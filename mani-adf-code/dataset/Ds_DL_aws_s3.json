@@ -1,0 +1,33 @@
+{
+	"name": "Ds_DL_aws_s3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_DL_",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "txt_file",
+				"fileSystem": "reporting-conatiner"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "InvoiceNo",
+				"type": "String"
+			},
+			{
+				"name": "UnitPrice",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
